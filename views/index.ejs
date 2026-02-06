@@ -9,14 +9,14 @@
   <!-- 
     - primary meta tags
   -->
-  <title><%= name %></title>
-  <meta name="title" content="<%= description %>">
-  <meta name="description" content="Github: diwasatreya">
+  <title>Solus - Premium Discord Raffle & Crypto Tracking Bot</title>
+  <meta name="title" content="Advanced Discord automation for raffles, giveaways, and real-time crypto tracking">
+  <meta name="description" content="Premium Discord bot featuring auto-join raffles, ERC-20 & NFT tracking, exclusive giveaways, and advanced notification tools for Discord communities">
 
   <!-- 
     - favicon
   -->
-  <link rel="shortcut icon" href="<%= pfp %>" type="image/svg+xml">
+  <link rel="shortcut icon" href="https://i.imgur.com/X0OT6Iw.png" type="image/png">
 
   <!-- 
     - custom css link
@@ -37,6 +37,241 @@
   -->
   <link rel="preload" as="image" href="/images/hero-banner.png">
 
+  <style>
+    /* Additional custom styles for consistent card sizing */
+    .grid-list {
+      display: grid;
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .grid-list {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      }
+    }
+
+    .promo-card,
+    .instruction-card {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 2rem;
+      min-height: 320px;
+    }
+
+    .card-icon {
+      margin-bottom: 1.5rem;
+      font-size: 3rem;
+    }
+
+    .card-title {
+      margin-bottom: 1rem;
+    }
+
+    .card-text {
+      flex-grow: 1;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .stats-card {
+      text-align: center;
+      padding: 2rem;
+      height: 100%;
+      min-height: 160px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .stats-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn {
+      padding: 0 2.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      cursor: pointer;
+      font-size: 1.1rem;
+      white-space: nowrap;
+      height: 54px;
+      line-height: 1;
+      min-width: 180px;
+    }
+
+    .btn-primary {
+      background: var(--sky-blue-crayola, #3B82F6);
+      color: #FFFFFF;
+      border: 2px solid #3B82F6;
+    }
+
+    .btn-primary:hover {
+      background: #2563EB;
+      border-color: #2563EB;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+    }
+
+    .btn-secondary {
+      background: #FFFFFF;
+      color: #000000;
+      border: 2px solid #FFFFFF;
+    }
+
+    .btn-secondary:hover {
+      background: transparent;
+      color: #FFFFFF;
+      border-color: #FFFFFF;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-small {
+      padding: 0 1.5rem;
+      height: 46px;
+      min-width: 140px;
+      font-size: 1rem;
+    }
+
+    .logo img {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .logo h1,
+    .logo h2 {
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 0.5rem;
+    }
+
+    .section {
+      padding: 4rem 0;
+    }
+
+    .section-title {
+      margin-bottom: 1rem;
+    }
+
+    .section-text {
+      margin-bottom: 2rem;
+    }
+
+    /* Ensure header logo alignment */
+    .header .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+
+    .navbar-top .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+
+    /* Hero section improvements */
+    .hero-content {
+      margin-bottom: 3rem;
+    }
+
+    .hero-title {
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-text {
+      margin-bottom: 2rem;
+    }
+
+    .hero-banner {
+      margin-top: 3rem;
+    }
+
+    /* Smooth rounded edges for hero banner image */
+    .hero-banner img {
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Pricing card button alignment */
+    .pricing-card-content {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .pricing-card-content .card-text {
+      margin-bottom: auto;
+    }
+
+    .pricing-card-content .btn {
+      margin-top: 1.5rem;
+      width: 100%;
+    }
+
+    /* Single line note styling */
+    .pricing-note {
+      margin-top: 2rem;
+      padding: 1rem 2rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .pricing-note strong {
+      color: #3B82F6;
+    }
+
+    .pricing-note a {
+      color: #3B82F6;
+      text-decoration: underline;
+      transition: color 0.3s ease;
+    }
+
+    .pricing-note a:hover {
+      color: #2563EB;
+    }
+
+    /* Center the note */
+    .text-center-note {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+    }
+
+    @media (max-width: 768px) {
+      .btn {
+        min-width: 160px;
+        font-size: 1rem;
+      }
+
+      .hero-banner {
+        margin-top: 2rem;
+      }
+    }
+  </style>
+
 </head>
 
 <body>
@@ -48,16 +283,18 @@
   <header class="header" data-header>
     <div class="container">
 
-      <a href="#" class="logo"><h1 style="color:#FFFFFF;" ><%= name %></h1>
-      
+      <a href="#" class="logo">
+        <img src="https://i.imgur.com/X0OT6Iw.png" alt="Solus Logo">
+        <h1 style="color:#FFFFFF;">Solus</h1>
       </a>
 
       <nav class="navbar" data-navbar>
 
         <div class="navbar-top">
 
-          <a href="#" class="logo"><h2><%= name %></h2>
-        
+          <a href="#" class="logo">
+            <img src="https://i.imgur.com/X0OT6Iw.png" alt="Solus Logo">
+            <h2>Solus</h2>
           </a>
 
           <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
@@ -73,7 +310,7 @@
           </li>
 
           <li>
-            <a href="#service" class="navbar-link">Services</a>
+            <a href="#service" class="navbar-link">Features</a>
           </li>
 
           <li>
@@ -81,11 +318,7 @@
           </li>
 
           <li>
-            <a href="#feature" class="navbar-link">Features</a>
-          </li>
-
-          <li>
-            <a href="/server" class="navbar-link">Server</a>
+            <a href="#pricing" class="navbar-link">Pricing</a>
           </li>
 
         </ul>
@@ -93,9 +326,8 @@
       </nav>
 
       <div class="btn-group">
-      
-
-        <a href="<%= invite %>" class="btn btn-primary">Invite Bot</a>
+        <a href="https://discord.gg/RtnqXSs7f9" class="btn btn-primary">Purchase</a>
+        <a href="https://whop.com/alphabot-team-owner-pass/alphabot/?ref=solus.work" class="btn btn-secondary">Purchase Alphabot</a>
       </div>
 
       <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
@@ -107,10 +339,6 @@
     </div>
   </header>
 
-
-
-
-
   <main>
     <article>
 
@@ -121,41 +349,29 @@
       <section class="hero" aria-label="home">
         <div class="container">
 
- <div class="hero-banner">
-            <figure class="hero-banner">
-              <img src="<%= pfp %>" width="799" height="823" alt="hero banner" class="w-100">
-            </figure>
-          </div>
           <div class="hero-content">
 
-            <h1 class="h1 hero-title">Perfect Discord Bot</h1>
+            <h1 class="h1 hero-title">Premium Raffle & Crypto Automation</h1>
 
             <p class="hero-text">
-              <%= description %>
+              Supercharge your Discord server with blockchain explorer, real-time ERC-20 & NFT tracking, exclusive giveaways, and intelligent notification tools. Built for Web3 communities.
             </p>
 
             <div class="btn-group">
-              <a href="/invite" class="btn btn-primary">Invite Bot</a>
-
-              <a href="#" class="play-btn">
-                <div class="icon">
-                  <ion-icon name="logo-discord" aria-hidden="true"></ion-icon>
-                </div>
-
-                <span class="span"><a href="/server">Support Server</a></span>
-              </a>
+              <a href="https://discord.gg/RtnqXSs7f9" class="btn btn-primary">Purchase</a>
+              <a href="https://whop.com/alphabot-team-owner-pass/alphabot/?ref=solus.work" class="btn btn-secondary">Purchase Alphabot</a>
             </div>
 
           </div>
 
-         
+          <div class="hero-banner">
+            <figure class="hero-banner">
+              <img src="https://i.imgur.com/BEZGXYi.png" width="799" height="823" alt="Solus Discord Bot Transaction Tracking" class="w-100">
+            </figure>
+          </div>
 
         </div>
       </section>
-
-
-
-
 
       <!-- 
         - #PROMO
@@ -164,10 +380,10 @@
       <section class="section promo" aria-label="promo">
         <div class="container" id="service">
 
-          <h2 class="h2 section-title text-center">What Bot Offers?</h2>
+          <h2 class="h2 section-title text-center">What Makes Solus Powerful?</h2>
 
           <p class="section-text text-center">
-          It was made under Discord TOS & this bot follows all the policies of Discord
+            Built for Web3 communities with advanced automation and real-time tracking capabilities
           </p>
 
           <ul class="grid-list">
@@ -176,16 +392,38 @@
               <div class="promo-card bg-gray">
 
                 <div class="card-icon">
-                  <ion-icon name="code-slash-outline" aria-hidden="true"></ion-icon>
+                  <ion-icon name="rocket-outline" aria-hidden="true"></ion-icon>
                 </div>
 
-                <h3 class="h3 card-title">Slash Command</h3>
+                <h3 class="h3 card-title">Auto-Join Raffles</h3>
 
                 <p class="card-text">
-                 Recently we have moved to slash command. / is used in very command of this bot
+                  Automatically enter raffles, FCFS drops, and community giveaways with intelligent wallet rotation and anti-Twitter block protection
                 </p>
 
-                <a href="https://discord.com/blog/slash-commands-are-here" class="btn-link">
+                <a href="https://whop.com/alphabot-team-owner-pass/alphabot/?ref=solus.work" class="btn-link">
+                  <span class="span">Learn More</span>
+
+                  <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                </a>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="promo-card bg-gray">
+
+                <div class="card-icon">
+                  <ion-icon name="pulse-outline" aria-hidden="true"></ion-icon>
+                </div>
+
+                <h3 class="h3 card-title">Real-Time Crypto Tracking</h3>
+
+                <p class="card-text">
+                  Monitor ERC-20 token purchases & sales, NFT mints, and marketplace activity in real-time directly in your Discord
+                </p>
+
+                <a href="https://discord.gg/RtnqXSs7f9" class="btn-link">
                   <span class="span">Explore More</span>
 
                   <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
@@ -198,38 +436,16 @@
               <div class="promo-card bg-gray">
 
                 <div class="card-icon">
-                  <ion-icon name="cog-outline" aria-hidden="true"></ion-icon>
+                  <ion-icon name="gift-outline" aria-hidden="true"></ion-icon>
                 </div>
 
-                <h3 class="h3 card-title">Discord Buttons</h3>
+                <h3 class="h3 card-title">Premium Giveaways</h3>
 
                 <p class="card-text">
-                 To make bot more reliable we have add buttons in this bot which makes you work easier
+                  Access exclusive premium giveaways and earn 30 additional entries in member giveaways to maximize your winning chances
                 </p>
 
-                <a href="https://discordjs.guide/interactions/buttons.html#building-and-sending-buttons" class="btn-link">
-                  <span class="span">Explore More</span>
-
-                  <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
-                </a>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="promo-card bg-gray">
-
-                <div class="card-icon">
-                  <ion-icon name="shield-checkmark-outline" aria-hidden="true"></ion-icon>
-                </div>
-
-                <h3 class="h3 card-title">Trusted Security</h3>
-
-                <p class="card-text">
-                  All the data of the user are kept in safe place. In case to remove the data you can contact as any time
-                </p>
-
-                <a href="https://www.mongodb.com/" class="btn-link">
+                <a href="https://discord.gg/RtnqXSs7f9" class="btn-link">
                   <span class="span">Explore More</span>
 
                   <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
@@ -243,10 +459,6 @@
         </div>
       </section>
 
-
-
-
-
       <!-- 
         - #STATS
       -->
@@ -256,14 +468,14 @@
 
           <div class="stats-content">
 
-            <h2 class="h2 section-title">Our Bot is in all over the Worldwide Coverage</h2>
+            <h2 class="h2 section-title">Trusted by Web3 Communities Worldwide</h2>
 
             <p class="section-text">
-             Our developers worked very hard on this bot & we archive many things. Thanks to all the servers and users for using this bot
+              Solus empowers Discord communities with automation tools that save time and increase engagement. Our premium features help users stay ahead in raffles and track crypto movements effortlessly.
             </p>
 
             <p class="section-text">
-             This bot was choosed by many servers they like the features of this bot. We have got many positive reviews on our bot
+              Join thousands of users who trust Solus for their raffle automation and real-time crypto tracking needs. Experience the difference premium tools make.
             </p>
 
             <ul class="stats-list">
@@ -271,10 +483,10 @@
               <li>
                 <div class="stats-card bg-gray">
 
-                  <h3 class="h3 card-title">150k+</h3>
+                  <h3 class="h3 card-title">24/7</h3>
 
                   <p class="card-text">
-                    Total Users
+                    Uptime Monitoring
                   </p>
 
                 </div>
@@ -283,10 +495,10 @@
               <li>
                 <div class="stats-card bg-gray">
 
-                  <h3 class="h3 card-title">45k</h3>
+                  <h3 class="h3 card-title">Real-Time</h3>
 
                   <p class="card-text">
-                  Total Servers
+                    Token & NFT Tracking
                   </p>
 
                 </div>
@@ -295,10 +507,10 @@
               <li>
                 <div class="stats-card bg-gray">
 
-                  <h3 class="h3 card-title">16k+</h3>
+                  <h3 class="h3 card-title">Auto</h3>
 
                   <p class="card-text">
-                    Total Votes
+                    Raffle Entries
                   </p>
 
                 </div>
@@ -315,12 +527,6 @@
         </div>
       </section>
 
-
-
-
-
-
-
       <!-- 
         - #INSTRUCTION
       -->
@@ -328,10 +534,10 @@
       <section class="section instruction" aria-label="instruction">
         <div class="container" id="feature">
 
-          <h2 class="h2 section-title text-center">Features of Bot</h2>
+          <h2 class="h2 section-title text-center">Core Features</h2>
 
           <p class="section-text text-center">
-           <%= name %> has many features but here are some main features of this bot.
+            Solus offers powerful automation and tracking tools designed for Web3 enthusiasts
           </p>
 
           <ul class="grid-list">
@@ -340,11 +546,13 @@
               <div class="instruction-card bg-gray">
 
                 <div class="card-icon">
-                  <ion-icon name="musical-notes-sharp"></ion-icon>
+                  <ion-icon name="settings-outline"></ion-icon>
                 </div>
 
+                <h3 class="h3 card-title">Auto-Join Tool</h3>
+
                 <p class="card-text">
-                <%= f1 %>
+                  Automatically join all raffles, community raffles, FCFS drops, with raffle storage and anti-Twitter block protection. Auto-rotate wallets for Alphabot Native users.
                 </p>
 
               </div>
@@ -354,11 +562,13 @@
               <div class="instruction-card bg-gray">
 
                 <div class="card-icon">
-                  <ion-icon name="hammer-sharp"></ion-icon>
+                  <ion-icon name="trending-up-outline"></ion-icon>
                 </div>
 
+                <h3 class="h3 card-title">Token & NFT Tracker</h3>
+
                 <p class="card-text">
-                 <%= f2 %>
+                  Real-time ERC-20 purchases & sales tracking, NFT mint monitoring, and marketplace transaction alerts for OpenSea, Blur, and more.
                 </p>
 
               </div>
@@ -368,11 +578,13 @@
               <div class="instruction-card bg-gray">
 
                 <div class="card-icon">
-                  <ion-icon name="happy-outline"></ion-icon>
+                  <ion-icon name="gift-sharp"></ion-icon>
                 </div>
 
+                <h3 class="h3 card-title">Exclusive Giveaways</h3>
+
                 <p class="card-text">
-                 <%= f3 %>
+                  Access premium-only giveaways and receive 30 additional entries in member giveaways to boost your winning potential.
                 </p>
 
               </div>
@@ -382,11 +594,13 @@
               <div class="instruction-card bg-gray">
 
                 <div class="card-icon">
-                  <ion-icon name="ticket-sharp"></ion-icon>
+                  <ion-icon name="notifications-outline"></ion-icon>
                 </div>
 
+                <h3 class="h3 card-title">Smart Notifications</h3>
+
                 <p class="card-text">
-                  <%= f4 %>
+                  Get detailed win raffle alerts, Twitter reconnect reminders, daily & weekly statistics, and notify main accounts for alt management.
                 </p>
 
               </div>
@@ -397,12 +611,94 @@
         </div>
       </section>
 
+      <!-- 
+        - #PRICING
+      -->
 
+      <section class="section pricing" aria-label="pricing">
+        <div class="container" id="pricing">
 
+          <h2 class="h2 section-title text-center">Subscription Plans</h2>
 
+          <p class="section-text text-center">
+            Choose the plan that fits your needs. OG members receive 30% OFF all subscriptions!
+          </p>
 
+          <ul class="grid-list">
 
+            <li>
+              <div class="instruction-card bg-gray">
+                <div class="pricing-card-content">
 
+                  <div class="card-icon">
+                    <ion-icon name="calendar-outline"></ion-icon>
+                  </div>
+
+                  <h3 class="h3 card-title">7 Days - FREE</h3>
+
+                  <p class="card-text">
+                    Try all premium features risk-free for one week
+                  </p>
+
+                  <a href="https://discord.gg/RtnqXSs7f9" class="btn btn-primary btn-small">Get Started</a>
+
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <div class="instruction-card bg-gray">
+                <div class="pricing-card-content">
+
+                  <div class="card-icon">
+                    <ion-icon name="time-outline"></ion-icon>
+                  </div>
+
+                  <h3 class="h3 card-title">1 Month - $15 USD</h3>
+
+                  <p class="card-text">
+                    Full access to all premium features for 30 days
+                  </p>
+
+                  <a href="https://discord.gg/RtnqXSs7f9" class="btn btn-primary btn-small">Purchase</a>
+
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <div class="instruction-card bg-gray">
+                <div class="pricing-card-content">
+
+                  <div class="card-icon">
+                    <ion-icon name="wallet-outline"></ion-icon>
+                  </div>
+
+                  <h3 class="h3 card-title">3 Months - $39 USD</h3>
+
+                  <p class="card-text">
+                    Save $6 with our quarterly plan ($13/month)
+                  </p>
+
+                  <a href="https://discord.gg/RtnqXSs7f9" class="btn btn-primary btn-small">Purchase</a>
+
+                </div>
+              </div>
+            </li>
+
+          </ul>
+
+          <div class="text-center-note">
+            <p class="pricing-note">
+              <strong>Note:</strong> Alphabot Premium required for Auto-Join Tool - <a href="https://whop.com/alphabot-team-owner-pass/alphabot/?ref=solus.work">Get Alphabot</a>
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+    </article>
+  </main>
 
   <!-- 
     - #FOOTER
@@ -410,23 +706,25 @@
 
   <footer class="footer">
 
-  
-
     <div class="footer-bottom">
       <div class="container">
 
         <p class="copyright">
-          Copyright diwasatreya 2022. All rights reserved.
+          Copyright Solus 2026. All rights reserved.
         </p>
 
         <ul class="footer-bottom-list">
 
           <li>
-            <a href="#" class="footer-bottom-link">Support</a>
+            <a href="https://discord.gg/RtnqXSs7f9" class="footer-bottom-link">Support</a>
           </li>
 
           <li>
-            <a href="#" class="footer-bottom-link">Privacy Policy</a>
+            <a href="https://discord.gg/RtnqXSs7f9" class="footer-bottom-link">Privacy Policy</a>
+          </li>
+
+          <li>
+            <a href="https://whop.com/alphabot-team-owner-pass/alphabot/?ref=solus.work" class="footer-bottom-link">Alphabot Premium</a>
           </li>
 
         </ul>
@@ -435,10 +733,6 @@
     </div>
 
   </footer>
-
-
-<!-- Github: diwasatreya -->
-
 
   <!-- 
     - custom js link
