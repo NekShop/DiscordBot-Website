@@ -779,8 +779,7 @@ body.active { overflow-y: hidden; }
 
   .ghost-btn:is(:hover, :focus) { color: var(--ultramarine-blue); }
 
-  .header .btn-primary { border-radius: var(--radius-5); }
-
+.header .btn-primary { border-radius: var(--radius-pill); }
 
 
   /**
